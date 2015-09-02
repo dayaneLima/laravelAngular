@@ -12,6 +12,7 @@ namespace CodeProject\Services;
 use CodeProject\Repositories\ProjectRepository;
 use CodeProject\Validators\ProjectValidator;
 use Prettus\Validator\Exceptions\ValidatorException;
+use Response;
 
 class ProjectService {
 
@@ -45,8 +46,15 @@ class ProjectService {
     public function update(array $data,$id){
         try {
             $this->validator->with($data)->passesOrFail();
+
             return $this->repository->update($data, $id);
         }catch(ValidatorException $e){
+//            $returnData = array(
+//                'error' => true,
+//                'status' => 'error',
+//                'message' => $e->getMessageBag()
+//            );
+//            return Response::json($returnData, 500);
             return [
                 'error' => true,
                 'message' => $e->getMessageBag()

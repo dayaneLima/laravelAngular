@@ -28,4 +28,8 @@ class Project extends Model implements Transformable
         return $this->hasOne('CodeProject\Entities\Client','id','client_id');
     }
 
+    public function notes(){
+        return $this->hasMany(ProjectNote::class);
+    }
+
 }
