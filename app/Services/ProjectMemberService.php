@@ -46,7 +46,8 @@ class ProjectMemberService {
     }
 
     public function removeMember($idProject,$idMember){
-        return $this->repository->deleteByIdProjectIdMemeber($idProject,$idMember);
+        $this->repository->deleteByIdProjectIdMemeber($idProject,$idMember);
+        return ['sucesso' => true];
     }
 
     public function isMember($idProject, $idMember){
